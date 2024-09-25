@@ -2,7 +2,7 @@
 # BASE IMAGE
 ###########################################
 
-FROM ubuntu AS build
+FROM ubuntu:latest
 
 RUN apt-get update && apt-get install -y golang-go
 
