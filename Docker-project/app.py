@@ -1,10 +1,21 @@
-from flask import flask
+from flask import Flask, request, jsonify
 
-app = flask(_name_)
+app = Flask(__name__)
 
 @app.route('/')
-def hello_devops():
-    return 'hello, devops!'
+def home():
+    return "Welcome to the Flask Calculator App!"
 
-if _name_ == '_main_':
-    app.run(debug=True, host='0.0.0.o', port=8000)
+@app.route('/calculate', methods=['POST'])
+def calculate():
+    data = request.get_json()
+    expression = data.get('expression', '')
+    
+    try:
+        result = eval(expression)  # Evaluate the mathematical expression
+        return jsonify({'result': result}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
