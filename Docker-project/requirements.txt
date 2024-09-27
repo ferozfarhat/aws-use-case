@@ -1,2 +1,2 @@
 Flask==2.1.0
-Werkeug==2.2.2
+Werkzeug==2.2.2
